@@ -31,6 +31,7 @@ Motivation: In most scheduling problems, if the problem were off-line, i.e. we k
 ## Design: 
 
 
+
 ## unitest 
 We will compare the results of off line to an online algorithm, due to the differences we made between the algorithms we would expect off line algorithm to give a more optimal result compared to the online algorithm
 
