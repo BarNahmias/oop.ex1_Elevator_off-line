@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+
+
+class Building {
+
+        self._maxFloors = 0
+        self._minFloor = 0
+}
+class Ex1 {
+
+        elevators{}
+         calls
+         rows
+
+         def assign_ele(self,rows):
+}
+class Elevator implements Building {
+
+        +id
+        +speed
+        +minFloor
+        +maxFloor
+        +closeTime
+        +openTime
+        +startTime
+        +stopTime
+}
+class call implements Building {
+       +elevator_call
+       +start_time
+       +src
+       +dest
+       +state
+       -elevator
+
+   def __str__(self) -> str:
+   def __repr__(self) -> str:
+}
+
+
+@enduml
