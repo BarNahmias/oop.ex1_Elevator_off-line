@@ -1,6 +1,6 @@
 ###    oop.ex1_Elevator_off-line    
 
-# ![This is an image](https://upload.wikimedia.org/wikipedia/commons/3/34/Elevator_icon_arrows.svg)      Off-line Algorithms for the Elevator  
+#     Off-line Algorithms for the Elevator                ![This is an image](https://upload.wikimedia.org/wikipedia/commons/3/34/Elevator_icon_arrows.svg)   
 
 Bar-Nahmias & Oriya-Zadok 
 
