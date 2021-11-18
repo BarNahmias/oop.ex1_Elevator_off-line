@@ -29,6 +29,16 @@ Motivation: In most scheduling problems, if the problem were off-line, i.e. we k
 6. Repit
 
 ## Design: 
+
+
+![image](https://user-images.githubusercontent.com/92825016/142480602-95f89818-dbb8-470d-b9a2-da760b64caa8.png)
+
+
+
+
+
+
+
 ![image](https://user-images.githubusercontent.com/92825016/142415318-cec28474-605a-4d53-8409-8bd0161590d1.png)
 
 
@@ -39,4 +49,3 @@ We will compare the results of off line to an online algorithm, due to the diffe
 
 
 
-![This is an image]( https://icon-library.com/images/elevator-icon/elevator-icon-23.jpg) 
