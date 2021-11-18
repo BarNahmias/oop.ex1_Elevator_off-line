@@ -29,7 +29,7 @@ Motivation: In most scheduling problems, if the problem were off-line, i.e. we k
 6. Repit
 
 ## Design: 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/zmg4Bsc/Whats-App-Image-2021-11-17-at-23-40-29.jpg" alt="Whats-App-Image-2021-11-17-at-23-40-29" border="0"></a>
+![image](https://user-images.githubusercontent.com/92825016/142415318-cec28474-605a-4d53-8409-8bd0161590d1.png)
 
 
 ## unitest 
