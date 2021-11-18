@@ -2,13 +2,16 @@
 'https://plantuml.com/class-diagram
 
 
+@startuml
 
-
+Ex1 *-- call
+call  *--  Building
+Elevator *--  Building
+Ex1-- Elevator
 
 class Building {
-
-        self._maxFloors = 0
-        self._minFloor = 0
+        maxFloors = 0
+        minFloor = 0
 }
 class Ex1 {
 
@@ -18,7 +21,7 @@ class Ex1 {
 
          def assign_ele(self,rows):
 }
-class Elevator implements Building {
+class Elevator {
 
         +id
         +speed
@@ -29,7 +32,7 @@ class Elevator implements Building {
         +startTime
         +stopTime
 }
-class call implements Building {
+class call {
        +elevator_call
        +start_time
        +src
