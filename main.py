@@ -8,20 +8,16 @@ import csv
 from Elevators import Elevator
 from Call import Call
 
-root1 = "Ex1_input/Ex1_Buildings/B3.json"
-root2 = "Ex1_input/Ex1_Calls/Calls_a.csv"
+root1 = "Ex1_input/Ex1_Buildings/B5.json"
+root2 = "Ex1_input/Ex1_Calls/Calls_d.csv"
 
 
 if __name__ == '__main__':
-    # elevators = {}
+
     calls = []
     rows = []
 
-
-
     ex = Ex1(calls, rows)
-    # ex.assign_ele()
-    # ex.random()
 
     #load json file
     try:
@@ -31,7 +27,7 @@ if __name__ == '__main__':
             ele_d = my_d["_elevators"]
 
             for item in ele_d:
-                e = Elevator(id=item["_id"],speed=item["_speed"],minFloor=item["_minFloor"],maxFloor=item["_maxFloor"],closeTime=item["_closeTime"],openTime=item["_openTime"],startTime=item["_startTime"],stopTime=item["_stopTime"])
+                e = Elevator(id=item["_id"],speed=int(item["_speed"]),minFloor=item["_minFloor"],maxFloor=item["_maxFloor"],closeTime=item["_closeTime"],openTime=item["_openTime"],startTime=item["_startTime"],stopTime=item["_stopTime"])
                 new_e[e._id] = e
 
             ex.elevators = new_e
@@ -40,41 +36,61 @@ if __name__ == '__main__':
         print(e)
 
 
-
-    # for i in elevators.items():
-    #     print(i[1].__dict__)
-
     #load csv file
     with open(root2, 'r') as file:
         csv_reader = csv.reader(file)
 
         for row in csv_reader:
-            call_temp = Call(elevator_call=row[0], start_time=row[1], src=row[2], dest=row[3], state=row[4], elevator=int(row[5]))
+            call_temp = Call(elevator_call=row[0], start_time=float(row[1]), src=row[2], dest=row[3], state=row[4], elevator=int(row[5]))
             ex.calls.append(call_temp)  # arrlist of all the calls
             ex.rows.append(row)
 
-    # for i in rows:
-    #     print(i.__dict__)
+
+    def call_to_elev():
+        num_of_elevators = len(ex.elevators) - 1
+        startTime = int(float(ex.rows[0][1]))
+        lastTime = int(float(ex.rows[len(ex.rows) - 1][1]))
+        total_time = int(abs(startTime - lastTime))
 
 
+        e = 0
+        p = int(total_time / len(ex.rows))
+        i = 1
+        for row in rows:
+            seg = i * p * 5 + startTime
+            r1 = float(row[1])  #start time
+            r2 = float(row[2])  #src
+            r3 = float(row[3])  #dest
 
-    # print(calls)
-    # print(rows)
-    print("dfwfvw")
+            if(r1 >= seg):
+                i += 1
+                seg = i * p * 5 + startTime
+
+            if (startTime <= r1) & (r1 <= seg) & (r2 - r3 < 0):
+                row[5] = e
+
+            elif (startTime <= r1) & (r1 <= seg) & (r2 - r3 > 0):
+                row[5] = e + 1
+
+            if (len(ex.elevators) == 1):
+                row[5] = e
+            e = e + 1
+
+            if (e  >= num_of_elevators):
+                e = 0
+
+        for row in rows:
+            if(row[5] == "-1"):
+                row[5] = 1
 
 
+    call_to_elev()
 
-
-
-
-    ex.assign_ele(ex.rows)
-
-    print(ex.rows)
 
     new_rows = []
     for i in ex.rows:
         new_rows.append(i)
-    # print(new_calls)
+
     with open("mycsv.csv", 'w', newline='') as f:
         thewriter = csv.writer(f)
 
