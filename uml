@@ -4,20 +4,21 @@
 
 @startuml
 
-Ex1 *-- call
-call  *--  Building
-Elevator *--  Building
-Ex1-- Elevator
+
+Building *-- Ex1
+call  *--  Ex1
+Elevator *--  Ex1
+
 
 class Building {
-        maxFloors = 0
-        minFloor = 0
+        +maxFloors = 0
+        +minFloor = 0
 }
 class Ex1 {
 
         elevators{}
-         calls
-         rows
+         +calls
+         +rows
 
          def assign_ele(self,rows):
 }
