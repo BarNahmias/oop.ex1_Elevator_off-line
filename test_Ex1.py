@@ -38,9 +38,6 @@ class TestEx1:
     fast = ex.faster_elev()
 
     def faster_elev(self):
-        assert(self.fast, 1)
+        self.assertEqual(self.fast, 1)
 
-    g = 5
-
-    def mar(self):
-        self.assertEqual(g, 5)
+   
