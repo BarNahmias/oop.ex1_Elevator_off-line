@@ -26,10 +26,12 @@ if __name__ == '__main__':
             my_d = json.load(f)
             ele_d = my_d["_elevators"]
 
+            c = 0
             for item in ele_d:
-                e = Elevator(id=item["_id"],speed=int(item["_speed"]),minFloor=item["_minFloor"],maxFloor=item["_maxFloor"],closeTime=item["_closeTime"],openTime=item["_openTime"],startTime=item["_startTime"],stopTime=item["_stopTime"])
-                new_e[e._id] = e
 
+                e = Elevator(id=item["_id"],speed=int(item["_speed"]),minFloor=item["_minFloor"],maxFloor=item["_maxFloor"],closeTime=item["_closeTime"],openTime=item["_openTime"],startTime=item["_startTime"],stopTime=item["_stopTime"])
+                new_e[c] = e
+                c += 1
             ex.elevators = new_e
 
     except IOError as e:
@@ -46,11 +48,23 @@ if __name__ == '__main__':
             ex.rows.append(row)
 
 
+    def faster_elev():
+        fast = 0
+        ans = Elevator
+        for e in ex.elevators.items():
+            if e[1]._speed > fast:
+                fast = e[1]._speed
+                ans = e
+        return ans[0]
+
+
     def call_to_elev():
         num_of_elevators = len(ex.elevators) - 1
         startTime = int(float(ex.rows[0][1]))
         lastTime = int(float(ex.rows[len(ex.rows) - 1][1]))
         total_time = int(abs(startTime - lastTime))
+
+        fast = faster_elev()
 
 
         e = 0
@@ -70,7 +84,7 @@ if __name__ == '__main__':
                 row[5] = e
 
             elif (startTime <= r1) & (r1 <= seg) & (r2 - r3 > 0):
-                row[5] = e + 1
+                row[5] = e
 
             if (len(ex.elevators) == 1):
                 row[5] = e
@@ -91,7 +105,7 @@ if __name__ == '__main__':
     for i in ex.rows:
         new_rows.append(i)
 
-    with open("mycsv.csv", 'w', newline='') as f:
+    with open("out.csv", 'w', newline='') as f:
         thewriter = csv.writer(f)
 
         thewriter.writerows(new_rows)
