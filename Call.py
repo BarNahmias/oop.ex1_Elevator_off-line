@@ -12,6 +12,7 @@ class Call:
 
     def __str__(self) -> str:
         return f"src: {self.src} rank: {self.elevator}"
+    
 
     def __repr__(self) -> str:
         return f"src: {self.src} elevator: {self.elevator}"
