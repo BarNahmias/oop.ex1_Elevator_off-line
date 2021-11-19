@@ -15,4 +15,5 @@ class Building:
                 self._maxFloors = my_d["_maxFloor"]
                 self._minFloor = my_d["_minFloor"]
         except IOError as e:
+            print(e)
           
