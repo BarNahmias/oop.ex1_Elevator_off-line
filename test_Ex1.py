@@ -1,4 +1,5 @@
-import pytest
+import unittest
+
 from Ex1 import Ex1
 
 import json
@@ -8,7 +9,7 @@ from Elevators import Elevator
 root1 = "Ex1_input/Ex1_Buildings/B3.json"
 
 
-class TestEx1:
+class TestEx1(unittest.TestCase):
     calls = []
     rows = []
 
@@ -29,15 +30,14 @@ class TestEx1:
                 new_e[c] = e
                 c += 1
             ex.elevators = new_e
-            print("sss")
 
     except IOError as ex:
-        print("ggg")
-        print(ex)
+
 
     fast = ex.faster_elev()
 
     def faster_elev(self):
+        
         self.assertEqual(self.fast, 1)
 
    
