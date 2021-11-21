@@ -36,7 +36,7 @@ class TestEx1(unittest.TestCase):
 
     fast = ex.faster_elev()
 
-    def faster_elev(self):
+    def test_faster_elev(self):
         
         self.assertEqual(self.fast, 1)
 
